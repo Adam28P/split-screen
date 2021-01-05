@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Way Greater Toronto Donation Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+</head>
+
+<body>
+
+    <style>
+        /* Pen-specific styles */
+        html,
+        body,
+        section {
+            height: 100%;
+        }
+
+        header {
+            border-bottom: 3px solid #D8D8D8;
+        }
+
+        body {
+            color: #000;
+            font-family: sans-serif;
+            font-size: 1.25rem;
+            line-height: 150%;
+            text-align: center;
+            /* text-shadow: 0 2px 2px #b6701e; */
+            margin: 0 auto;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+        }
+
+        h1 {
+            /* font-size: 1.75rem; */
+            font-size: 1.25em;
+            margin: 0 0 0.75rem 0;
+            color: #da291c;
+            font-family: "Avenir LT W01 55 Roman", Helvetica, Arial, serif;
+            margin-top: 15px;
+        }
+
+        h5{
+            margin: 0;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 150%;
+        }
+
+        /* Pattern styles */
+        .container {
+            display: flex;
+        }
+
+        .left-half {
+            flex: 1;
+            padding: 1rem;
+            /* background-image: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2190/TM-backgroundImage1280x800.jpg?v=1604504289000); */
+            background-image: url(pexels-andrea-piacquadio-3865558.jpg);
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .right-half {
+            background-color: #fff;
+            flex: 1;
+            padding: 1rem;
+            margin-top: 5%;
+            z-index: 1;
+        }
+
+        article {
+            padding: 0 50px;
+        }
+
+        /* PROGRESS BAR STYLING STARTS */
+
+        .progress-bar {
+            padding: 0;
+            counter-reset: step;
+        }
+
+        .progress-bar li {
+            list-style-type: none;
+            float: left;
+            width: 33.33%;
+            position: relative;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1rem;
+        }
+
+        .progress-bar li::before {
+            content: counter(step);
+            counter-increment: step; 
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid #ddd;
+            display: block;
+            text-align: center;
+            margin: 0 auto 10px auto;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .progress-bar li:first-child::before{
+            font-family: "Font Awesome 5 Free"; font-weight: 900; 
+            content: "\f004";
+        }
+
+        .progress-bar li:nth-child(2)::before{
+            font-family: "Font Awesome 5 Free"; font-weight: 900; 
+            content: "\f007";
+        }
+
+        .progress-bar li:nth-child(3)::before{
+            font-family: "Font Awesome 5 Free"; font-weight: 900; 
+            content: "\f09d";
+        }
+
+        .progress-bar li::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background-color: #c4c4c4;
+            top: 23px;
+            left: -50%;
+            z-index: -1;
+        }
+
+        .progress-bar li:first-child::after {
+            content: none;
+        }
+
+        .progress-bar li.active:before {
+            background-color: #da291c;
+            color: white;
+        }
+
+        .progress-bar li.active {
+            color: #da291c;
+        }
+
+        .progress-bar li.active::before {
+            border-color: #da291c;
+        }
+
+        /* .progress-bar li.active + li:after{
+            background-color: green;
+        } */
+
+        /* PROGRESS BAR STYLING ENDS */
+
+        /* DONATION FORM STYLING */
+        .donate-now {
+            list-style-type: none;
+            margin: 25px 0 0 0;
+            padding: 0;
+        }
+
+        .donate-now li {
+            float: left;
+            margin: 15px 15px 0 0;
+            width: 100px;
+            height: 50px;
+            position: relative;
+        }
+
+        .donate-now label,
+        .donate-now input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .donate-now input[type="radio"] {
+            opacity: 0.011;
+            z-index: 100;
+        }
+
+        .donate-now input[type="radio"]:checked+label {
+            background: #da291c;
+            color: #fff;
+        }
+
+        .donate-now label {
+            padding: 5px;
+            border: 1px solid #da291c;
+            cursor: pointer;
+            z-index: 90;
+            font-size: 16px;
+            color: #da291c;
+            line-height: 40px;
+        }
+
+        .donate-now label:hover {
+            background: #DDD;
+        }
+
+        @media only screen and (max-width: 1025px) {
+            .container {
+                flex-direction: column;
+            }
+
+            article {
+                padding: 0px !important;
+            }
+
+            .right-half {
+                margin-top: 0 !important;
+            }
+        }
+    </style>
+
+    <header id="header" class="clearfix" role="banner">
+        <div class="container">
+            <div id="brand">
+                <a href="https://unitedwaygt.org/" target="_blank"><img
+                        src="https://www.unitedwaygt.org/image/email-template-images/events/icount/UWGT_Logo.png"
+                        style="border: 0px; display: block; float: none; height: 70px; padding:20px;"
+                        alt="United Way Greater Toronto logo"></a>
+            </div>
+
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="left-half">
+        </div>
+        <div class="right-half">
+            <ul class="progress-bar">
+                <li class="active gift"><strong>Your Gift</strong></li>
+                <li class="donor"><strong>Donor Information</strong></li>
+                <li class="payment"><strong>Payment</strong></li>
+            </ul>
+            <article>
+                <h1>United Way Greater Toronto</h1>
+                <h5>Make an Online Donation</h5>
+                <p>Every dollar that you contribute will help support your neighbours and provide much needed relief to
+                    families right here in Toronto, Peel and York. Your donation will help your neighbours who need it
+                    most — from putting food on the table to accessing mental health and other community services.</p>
+
+                <form name="dontateNow" method="post" action="#">
+                    <ul class="donate-now">
+                        <li>
+                            <input type="radio" id="amt25" name="amount" checked="checked"/>
+                            <label for="amt25">$25.00</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="amt50" name="amount" />
+                            <label for="amt50">$50.00</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="amt75" name="amount" />
+                            <label for="amt75">$75.00</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="amt100" name="amount" />
+                            <label for="amt100">$100.00</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="amount" id="other"
+                                onclick="document.getElementById('otherAmt').removeAttribute('disabled')">
+                            <label for="other">Other:</label>
+                        </li>
+                        <li>
+                            <input type="text" id="otherAmt" name="amount" placeholder="Enter Amount" disabled/>
+                        </li>
+                    </ul>
+                </form>
+            </article>
+        </div>
+    </section>
+</body>
+
+</html>
