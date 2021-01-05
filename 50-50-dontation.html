@@ -226,6 +226,7 @@
             border: 1px solid #da291c;
             color: #da291c;
             text-align: center;
+            font-size:16px;
         }
 
         .custom-amount::placeholder {
@@ -389,7 +390,7 @@
                         </li>
                         <li>
                             <input type="number" class="custom-amount" name="custom-amount"
-                                placeholder="Enter amount" />
+                                placeholder="Other" />
                         </li>
                     </ul>
                 </form>
@@ -412,10 +413,6 @@
                     $('input[name=amount]').attr('checked', false);
                     $(this).parent().addClass("selected");
                 });
-
-                // $('input,.custom-amount').focus(function () {
-                //     $(this).removeAttr('placeholder');
-                // });
 
                 $('input,.custom-amount').on("click focus", function () {
                     $(this).attr("placeholder", "");
