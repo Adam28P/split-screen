@@ -65,7 +65,6 @@
         .left-half {
             flex: 1;
             padding: 1rem;
-            /* background-image: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/2190/TM-backgroundImage1280x800.jpg?v=1604504289000); */
             background-image: url(pexels-andrea-piacquadio-3865558.jpg);
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -267,6 +266,14 @@
             margin-top: 25px;
         }
 
+        .mobile-image{
+                display: none;
+            }
+
+        .mobile-image img{
+            max-width:100%;
+        }
+
         @media only screen and (max-width: 1025px) {
             .container {
                 flex-direction: column;
@@ -288,6 +295,12 @@
             .custom-amount {
                 min-width: 100% !important;
             }
+            .left-half{
+                display:none;
+            }
+            .mobile-image{
+                display:block;
+            }
         }
     </style>
 
@@ -304,6 +317,9 @@
     </header>
 
     <section class="container">
+        <div class="mobile-image">
+            <img src="pexels-andrea-piacquadio-3865558.jpg" alt="stock image" />
+        </div>
         <div class="left-half">
         </div>
         <div class="right-half">
