@@ -40,12 +40,12 @@
         }
 
         h1 {
-            /* font-size: 1.75rem; */
-            font-size: 1.25em;
+            font-size: 1.75rem;
             margin: 0 0 0.75rem 0;
             color: #da291c;
             font-family: "Avenir LT W01 55 Roman", Helvetica, Arial, serif;
             margin-top: 15px;
+            text-align: left;
         }
 
         h5 {
@@ -53,8 +53,9 @@
         }
 
         p {
-            font-size: 16px;
+            font-size: 1rem;
             line-height: 150%;
+            text-align: left;
         }
 
         /* Pattern styles */
@@ -78,12 +79,43 @@
             background-color: #fff;
             flex: 1;
             padding: 1rem;
-            margin-top: 5%;
+            /* margin-top: 5%; */
             z-index: 1;
         }
 
-        article {
-            padding: 0 50px;
+        article,
+        .logo {
+            padding: 0 20px;
+        }
+
+        .logo {
+            margin-bottom: 25px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex-child {
+            flex: 1;
+        }
+
+        .flex-child:first-child {
+            margin-right: 20px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+        }
+
+        .social-icons ul {
+            list-style: none;
+        }
+
+        .social-icons ul li {
+            display: inline;
+            margin-right: 15px;
         }
 
         /* PROGRESS BAR STYLING STARTS */
@@ -91,6 +123,7 @@
         .progress-bar {
             padding: 0;
             counter-reset: step;
+            display: none;
         }
 
         .progress-bar li {
@@ -226,7 +259,7 @@
             border: 1px solid #da291c;
             color: #da291c;
             text-align: center;
-            font-size:16px;
+            font-size: 16px;
         }
 
         .custom-amount::placeholder {
@@ -313,6 +346,23 @@
                 padding: 0px !important;
             }
 
+            .logo {
+                padding: 0 !important;
+                margin-bottom: 5px !important;
+            }
+
+            .flex-container {
+                flex-direction: column !important;
+            }
+
+            .social-icons ul {
+                padding: 0 !important;
+            }
+
+            .social-icons ul li {
+                float: left !important;
+            }
+
             .right-half {
                 margin-top: 0 !important;
             }
@@ -339,7 +389,7 @@
         }
     </style>
 
-    <header id="header" class="clearfix" role="banner">
+    <!-- <header id="header" class="clearfix" role="banner">
         <div class="container">
             <div id="brand">
                 <a href="https://unitedwaygt.org/" target="_blank"><img
@@ -349,7 +399,7 @@
             </div>
 
         </div>
-    </header>
+    </header> -->
 
     <section class="container">
         <div class="mobile-image">
@@ -358,17 +408,38 @@
         <div class="left-half">
         </div>
         <div class="right-half">
+            <div class="flex-container">
+
+                <div class="flex-child logo">
+                    <img src="https://www.unitedwaygt.org/image/email-template-images/events/icount/UWGT_Logo.png"
+                        width="250" alt="United Way Greater Toronto logo" />
+                </div>
+
+                <div class="flex-child social-icons">
+                    <ul>
+                        <li><a href="https://www.facebook.com/uwgreaterTO"><img src="https://img.icons8.com/ios-glyphs/30/000000/facebook-new.png" /></a>
+                        </li>
+                        <li><a href="https://twitter.com/uwgreaterTO"><img src="https://img.icons8.com/ios-glyphs/30/000000/twitter.png" /></a>
+                        </li>
+                        <li><a href="https://www.instagram.com/uwgreaterTO"><img src="https://img.icons8.com/ios-glyphs/30/000000/instagram-new.png" /></a>
+                        </li>
+                        <li><a href="https://www.linkedin.com/company/uwgreaterto/"><img src="https://img.icons8.com/ios-glyphs/30/000000/linkedin.png" /></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
             <ul class="progress-bar">
                 <li class="active gift"><strong>Your Gift</strong></li>
                 <li class="donor"><strong>Donor Information</strong></li>
                 <li class="payment"><strong>Payment</strong></li>
             </ul>
             <article>
-                <h1>United Way Greater Toronto</h1>
-                <h5>Make an Online Donation</h5>
+                <h1>Your community needs you, will you help?</h1>
+                <!-- <h5>Make an Online Donation</h5> -->
                 <p>Every dollar that you contribute will help support your neighbours and provide much needed relief to
                     families right here in Toronto, Peel and York. Your donation will help your neighbours who need it
-                    most — from putting food on the table to accessing mental health and other community services.</p>
+                    most—from putting food on the table to accessing mental health and other community services.</p>
 
                 <form name="dontateNow" method="post" action="#">
                     <ul class="donate-now">
@@ -389,8 +460,7 @@
                             <label for="amt100">$100.00</label>
                         </li>
                         <li>
-                            <input type="number" class="custom-amount" name="custom-amount"
-                                placeholder="Other" />
+                            <input type="number" class="custom-amount" name="custom-amount" placeholder="Other" />
                         </li>
                     </ul>
                 </form>
