@@ -227,6 +227,18 @@
             text-align: center;
         }
 
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
         .selected .custom-amount {
             background: #da291c;
             color: #fff;
@@ -266,12 +278,12 @@
             margin-top: 25px;
         }
 
-        .mobile-image{
-                display: none;
-            }
+        .mobile-image {
+            display: none;
+        }
 
-        .mobile-image img{
-            max-width:100%;
+        .mobile-image img {
+            max-width: 100%;
         }
 
         @media only screen and (max-width: 1025px) {
@@ -286,20 +298,25 @@
             .right-half {
                 margin-top: 0 !important;
             }
+
             .donate-now {
                 flex-direction: column !important;
             }
+
             .donate-now li {
                 width: 100% !important;
             }
+
             .custom-amount {
                 min-width: 100% !important;
             }
-            .left-half{
-                display:none;
+
+            .left-half {
+                display: none;
             }
-            .mobile-image{
-                display:block;
+
+            .mobile-image {
+                display: block;
             }
         }
     </style>
@@ -354,7 +371,8 @@
                             <label for="amt100">$100.00</label>
                         </li>
                         <li>
-                            <input class="custom-amount" name="custom-amount" placeholder="Enter amount" />
+                            <input type="number" class="custom-amount" name="custom-amount"
+                                placeholder="Enter amount" />
                         </li>
                     </ul>
                 </form>
