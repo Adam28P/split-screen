@@ -415,6 +415,12 @@
                 // $('input,.custom-amount').focus(function () {
                 //     $(this).removeAttr('placeholder');
                 // });
+
+                $('input,.custom-amount').on("click focus", function () {
+                    $(this).attr("placeholder", "");
+                }).on("blur", function () {
+                    $(this).attr("placeholder", "Enter amount");
+                });
             });
     </script>
 </body>
