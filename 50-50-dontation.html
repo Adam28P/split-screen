@@ -120,6 +120,13 @@
             margin-right: 15px;
         }
 
+        .donation-gift-question {
+            color: #da291c;
+            margin: 30px 0 0 0;
+            text-align: left;
+            border-bottom: 2px solid;
+        }
+
         /* PROGRESS BAR STYLING STARTS */
 
         .progress-bar {
@@ -215,7 +222,7 @@
 
         .donate-now li {
             float: left;
-            margin: 15px 15px 0 0;
+            margin: 0px 15px 0 0;
             width: 100px;
             height: 50px;
             position: relative;
@@ -344,10 +351,6 @@
                 flex-direction: column;
             }
 
-            article {
-                padding: 0px !important;
-            }
-
             .logo {
                 padding: 0 !important;
                 margin-bottom: 5px !important;
@@ -385,8 +388,20 @@
                 display: none;
             }
 
+            .right-half {
+                padding: 0;
+            }
+
             .mobile-image {
                 display: block;
+            }
+
+            article, .flex-container {
+                padding: 1rem;
+            }
+
+            .donate-now li {
+            margin: 15px 15px 0 0 !important;
             }
         }
     </style>
@@ -404,12 +419,12 @@
     </header> -->
 
     <section class="container">
-        <div class="mobile-image">
-            <img src="pexels-andrea-piacquadio-3865558.jpg" alt="stock image" />
-        </div>
         <div class="left-half">
         </div>
         <div class="right-half">
+            <div class="mobile-image">
+                <img src="pexels-andrea-piacquadio-3865558.jpg" alt="stock image" />
+            </div>
             <div class="flex-container">
 
                 <div class="flex-child logo">
@@ -442,6 +457,8 @@
                 <p>Every dollar that you contribute will help support your neighbours and provide much needed relief to
                     families right here in Toronto, Peel and York. Your donation will help your neighbours who need it
                     most—from putting food on the table to accessing mental health and other community services.</p>
+                
+                <h4 class="donation-gift-question">Donation Information</h4>
 
                 <form name="dontateNow" method="post" action="#">
                     <ul class="donate-now">
@@ -466,7 +483,7 @@
                         </li>
                     </ul>
                 </form>
-                <button type="submit" value="submitAmount">Donor Information &#8594;</button>
+                <!-- <button type="submit" value="submitAmount">Donor Information &#8594;</button> -->
             </article>
         </div>
     </section>
