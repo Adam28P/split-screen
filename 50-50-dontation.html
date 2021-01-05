@@ -13,7 +13,6 @@
 <body>
 
     <style>
-        /* Pen-specific styles */
         html,
         body,
         section {
@@ -49,7 +48,7 @@
             margin-top: 15px;
         }
 
-        h5{
+        h5 {
             margin: 0;
         }
 
@@ -107,7 +106,7 @@
 
         .progress-bar li::before {
             content: counter(step);
-            counter-increment: step; 
+            counter-increment: step;
             width: 50px;
             height: 50px;
             line-height: 50px;
@@ -119,18 +118,21 @@
             background-color: #fff;
         }
 
-        .progress-bar li:first-child::before{
-            font-family: "Font Awesome 5 Free"; font-weight: 900; 
+        .progress-bar li:first-child::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
             content: "\f004";
         }
 
-        .progress-bar li:nth-child(2)::before{
-            font-family: "Font Awesome 5 Free"; font-weight: 900; 
+        .progress-bar li:nth-child(2)::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
             content: "\f007";
         }
 
-        .progress-bar li:nth-child(3)::before{
-            font-family: "Font Awesome 5 Free"; font-weight: 900; 
+        .progress-bar li:nth-child(3)::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
             content: "\f09d";
         }
 
@@ -173,6 +175,8 @@
             list-style-type: none;
             margin: 25px 0 0 0;
             padding: 0;
+            display: flex;
+            justify-content: space-between;
         }
 
         .donate-now li {
@@ -215,6 +219,52 @@
 
         .donate-now label:hover {
             background: #DDD;
+        }
+
+        .custom-amount {
+            max-width: 100px;
+            border: 1px solid #da291c;
+            color: #da291c;
+            text-align: center;
+        }
+
+        .selected .custom-amount {
+            background: #da291c;
+            color: #fff;
+        }
+
+        .selected .custom-amount::placeholder {
+            color: #fff;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        .selected .custom-amount:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: #fff;
+        }
+
+        .selected .custom-amount::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        button[type=submit] {
+            background-color: #da291c;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+            float: right;
+            font-size: 18px;
+            width: 100%;
+            margin-top: 25px;
         }
 
         @media only screen and (max-width: 1025px) {
@@ -263,34 +313,51 @@
                 <form name="dontateNow" method="post" action="#">
                     <ul class="donate-now">
                         <li>
-                            <input type="radio" id="amt25" name="amount" checked="checked"/>
+                            <input type="radio" id="amt25" name="amount" value="25.00" />
                             <label for="amt25">$25.00</label>
                         </li>
                         <li>
-                            <input type="radio" id="amt50" name="amount" />
+                            <input checked="checked" type="radio" id="amt50" name="amount" value="50.00" />
                             <label for="amt50">$50.00</label>
                         </li>
                         <li>
-                            <input type="radio" id="amt75" name="amount" />
+                            <input type="radio" id="amt75" name="amount" value="75.00" />
                             <label for="amt75">$75.00</label>
                         </li>
                         <li>
-                            <input type="radio" id="amt100" name="amount" />
+                            <input type="radio" id="amt100" name="amount" value="100.00" />
                             <label for="amt100">$100.00</label>
                         </li>
                         <li>
-                            <input type="radio" name="amount" id="other"
-                                onclick="document.getElementById('otherAmt').removeAttribute('disabled')">
-                            <label for="other">Other:</label>
-                        </li>
-                        <li>
-                            <input type="text" id="otherAmt" name="amount" placeholder="Enter Amount" disabled/>
+                            <input class="custom-amount" name="custom-amount" placeholder="Enter amount" />
                         </li>
                     </ul>
                 </form>
+                <button type="submit" value="submitAmount">Donor Information &#8594;</button>
             </article>
         </div>
     </section>
+
+
+    <script>
+        $(document).ready(
+            function () {
+                $('input[name=amount]').on('click', function () {
+                    var customText = $('input[name=custom-amount]');
+                    customText.val('');
+                    customText.parent().removeClass("selected");
+                });
+
+                $('input[name=custom-amount]').on('click', function () {
+                    $('input[name=amount]').attr('checked', false);
+                    $(this).parent().addClass("selected");
+                });
+
+                // $('input,.custom-amount').focus(function () {
+                //     $(this).removeAttr('placeholder');
+                // });
+            });
+    </script>
 </body>
 
 </html>
