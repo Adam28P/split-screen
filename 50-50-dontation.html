@@ -434,7 +434,7 @@
             display: none;
         }
 
-        .require-if-active{
+        .require-if-active {
             width: 83px;
             border: #da291c 1px solid;
             margin-left: -6px;
@@ -511,8 +511,8 @@
                             <label for="amtOther">Other</label>
                         </li>
                         <li class="reveal-if-active" id="reveal-if-activee">
-                            <input type="number" id="which-dog" name="which-dog" class="require-if-active"
-                                data-require-pair="#amtOther">
+                            <input type="number" id="which-dog" name="which-dog"
+                                class="require-if-active" data-require-pair="#amtOther">
                         </li>
                     </ul>
                 </form>
@@ -529,6 +529,7 @@
                 if ($(el.data("require-pair")).is(":checked")) {
                     el.prop("required", true);
                     document.getElementById("reveal-if-activee").style.display = "block";
+                    $("#which-dog").focus();
                 } else {
                     el.prop("required", false);
                     document.getElementById("reveal-if-activee").style.display = "none";
