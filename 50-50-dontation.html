@@ -544,93 +544,26 @@
                             <label for="amtOther">Other</label>
                         </li>
                         <li class="reveal-if-active" id="reveal-if-activee">
-                            <input type="text" id="which-dog" name="which-dog" class="require-if-active"
+                            <input type="number" id="which-dog" name="which-dog" class="require-if-active"
                                 data-require-pair="#amtOther">
                         </li>
-
-
-
-                        <!-- <li class="custom-amount-label">
-                            <input type="number" pattern="\d*" class="custom-amount" name="custom-amount"
-                                placeholder="Other" />
-                        </li> -->
                     </ul>
                 </form>
-                <!-- <button type="submit" value="submitAmount">Donor Information &#8594;</button> -->
             </article>
         </div>
     </section>
 
 
     <script>
-        // $(document).ready(
-        //     function () {
-        //         $('input[name=amount]').on('click', function () {
-        //             var customText = $('input[name=custom-amount]');
-        //             customText.val('');
-        //             customText.parent().removeClass("selected");
-        //         });
-
-        //         $('input[name=custom-amount]').on('click', function () {
-        //             $('input[name=amount]').attr('checked', false);
-        //             $(this).parent().addClass("selected");
-        //         });
-
-        //         $('input,.custom-amount').on("click focus", function () {
-        //             $(this).attr("placeholder", "");
-        //         }).on("blur", function () {
-        //             $(this).attr("placeholder", "Other");
-        //         });
-        //     });
-
-
-        // var FormStuff = {
-
-        //     init: function () {
-        //         this.applyConditionalRequired();
-        //         this.bindUIActions();
-        //     },
-
-        //     bindUIActions: function () {
-        //         $("input[type='radio']").on("change", this.applyConditionalRequired);
-        //     },
-
-        //     applyConditionalRequired: function () {
-
-        //         $(".require-if-active").each(function () {
-        //             var el = $(this);
-        //             if ($(el.data("require-pair")).is(":checked")) {
-        //                 el.prop("required", true);
-        //             } else {
-        //                 el.prop("required", false);
-        //             }
-        //         });
-
-        //     }
-
-        // };
-
-        // FormStuff.init();
-
-
-
-        // $("input[type='radio']").on("click", function () {
-        //     $(".require-if-active").each(function () {
-        //         var el = $(this);
-        //         if ($(el.data("require-pair")).is(":checked")) {
-        //             el.prop("required", true);
-        //         } else {
-        //             el.prop("required", false);
-        //         }
-        //     });
-        // });
 
         $("input[type='radio']").on("click", function () {
             $(".require-if-active").each(function () {
                 var el = $(this);
                 if ($(el.data("require-pair")).is(":checked")) {
+                    el.prop("required", true);
                     document.getElementById("reveal-if-activee").style.display = "block";
                 } else {
+                    el.prop("required", false);
                     document.getElementById("reveal-if-activee").style.display = "none";
                 }
             });
