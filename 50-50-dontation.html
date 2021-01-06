@@ -303,7 +303,7 @@
         .selected .custom-amount {
             background: #da291c;
             color: #fff;
-            padding-left:20px;
+            padding-left: 20px;
             text-align: left;
         }
 
@@ -429,6 +429,37 @@
                 align-items: flex-start !important;
             }
         }
+
+
+
+
+
+        /* .reveal-if-active {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            font-size: 16px;
+            transform: scale(0.8);
+            transition: 0.5s;
+        }
+
+        input[type="radio"]:checked~.reveal-if-active {
+            opacity: 1;
+            max-height: 100px;
+            padding: 10px 20px;
+            transform: scale(1);
+            overflow: visible;
+        } */
+
+        #reveal-if-activee {
+            display: none;
+            margin-left: -6px;
+        }
+
+        .require-if-active{
+            width: 100px;
+            border: #da291c 1px solid;
+        }
     </style>
 
     <!-- <header id="header" class="clearfix" role="banner">
@@ -508,10 +539,21 @@
                             <input type="radio" id="amt100" name="amount" value="100.00" />
                             <label for="amt100">$100</label>
                         </li>
-                        <li class="custom-amount-label">
+                        <li>
+                            <input type="radio" id="amtOther" name="amount" />
+                            <label for="amtOther">Other</label>
+                        </li>
+                        <li class="reveal-if-active" id="reveal-if-activee">
+                            <input type="text" id="which-dog" name="which-dog" class="require-if-active"
+                                data-require-pair="#amtOther">
+                        </li>
+
+
+
+                        <!-- <li class="custom-amount-label">
                             <input type="number" pattern="\d*" class="custom-amount" name="custom-amount"
                                 placeholder="Other" />
-                        </li>
+                        </li> -->
                     </ul>
                 </form>
                 <!-- <button type="submit" value="submitAmount">Donor Information &#8594;</button> -->
@@ -521,25 +563,79 @@
 
 
     <script>
-        $(document).ready(
-            function () {
-                $('input[name=amount]').on('click', function () {
-                    var customText = $('input[name=custom-amount]');
-                    customText.val('');
-                    customText.parent().removeClass("selected");
-                });
+        // $(document).ready(
+        //     function () {
+        //         $('input[name=amount]').on('click', function () {
+        //             var customText = $('input[name=custom-amount]');
+        //             customText.val('');
+        //             customText.parent().removeClass("selected");
+        //         });
 
-                $('input[name=custom-amount]').on('click', function () {
-                    $('input[name=amount]').attr('checked', false);
-                    $(this).parent().addClass("selected");
-                });
+        //         $('input[name=custom-amount]').on('click', function () {
+        //             $('input[name=amount]').attr('checked', false);
+        //             $(this).parent().addClass("selected");
+        //         });
 
-                $('input,.custom-amount').on("click focus", function () {
-                    $(this).attr("placeholder", "");
-                }).on("blur", function () {
-                    $(this).attr("placeholder", "Other");
-                });
+        //         $('input,.custom-amount').on("click focus", function () {
+        //             $(this).attr("placeholder", "");
+        //         }).on("blur", function () {
+        //             $(this).attr("placeholder", "Other");
+        //         });
+        //     });
+
+
+        // var FormStuff = {
+
+        //     init: function () {
+        //         this.applyConditionalRequired();
+        //         this.bindUIActions();
+        //     },
+
+        //     bindUIActions: function () {
+        //         $("input[type='radio']").on("change", this.applyConditionalRequired);
+        //     },
+
+        //     applyConditionalRequired: function () {
+
+        //         $(".require-if-active").each(function () {
+        //             var el = $(this);
+        //             if ($(el.data("require-pair")).is(":checked")) {
+        //                 el.prop("required", true);
+        //             } else {
+        //                 el.prop("required", false);
+        //             }
+        //         });
+
+        //     }
+
+        // };
+
+        // FormStuff.init();
+
+
+
+        // $("input[type='radio']").on("click", function () {
+        //     $(".require-if-active").each(function () {
+        //         var el = $(this);
+        //         if ($(el.data("require-pair")).is(":checked")) {
+        //             el.prop("required", true);
+        //         } else {
+        //             el.prop("required", false);
+        //         }
+        //     });
+        // });
+
+        $("input[type='radio']").on("click", function () {
+            $(".require-if-active").each(function () {
+                var el = $(this);
+                if ($(el.data("require-pair")).is(":checked")) {
+                    document.getElementById("reveal-if-activee").style.display = "block";
+                } else {
+                    document.getElementById("reveal-if-activee").style.display = "none";
+                }
             });
+        });
+
     </script>
 </body>
 
