@@ -303,6 +303,17 @@
         .selected .custom-amount {
             background: #da291c;
             color: #fff;
+            padding-left:20px;
+            text-align: left;
+        }
+
+        .custom-amount-label::after {
+            content: '$';
+            position: absolute;
+            left: 8px;
+            top: 10px;
+            color: #fff;
+            font-size: 1rem;
         }
 
         .selected .custom-amount::placeholder {
@@ -498,7 +509,8 @@
                             <label for="amt100">$100</label>
                         </li>
                         <li class="custom-amount-label">
-                            <input type="number" pattern="\d*" class="custom-amount" name="custom-amount" placeholder="Other" />
+                            <input type="number" pattern="\d*" class="custom-amount" name="custom-amount"
+                                placeholder="Other" />
                         </li>
                     </ul>
                 </form>
